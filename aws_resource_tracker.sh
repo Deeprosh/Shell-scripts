@@ -6,9 +6,9 @@
 
 #Author:Deepthi​
 
-#Date:12-08-2025​
+#Date:01-04-2026​
 
-#Version:v1​
+#Version:v2​
 
 #################​
 
@@ -26,8 +26,9 @@
 
 #​
 
-set -x​
-
+set -x #debug mode​
+set -e #exits when there is an error
+set -o #pipefail
 ​
 
 #list S3 buckets​
@@ -42,7 +43,7 @@ aws s3 ls​
 
 echo "print list of EC2 instances"​
 
-aws ec2 describe-instances​
+aws ec2 describe-instances | jq '.Reservations[].Instances[].Instanceid'​
 
 ​
 
